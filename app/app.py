@@ -4,11 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return "Working!"
+    return "Working!"
 
 @app.route('/kill-me')
 def kill_app():
-	exit(0)
+    exit(0)
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0', port='5000')
