@@ -1,0 +1,13 @@
+--- kubernetes/cluster/common.sh	2016-09-13 01:24:56.000000000 +0200
++++ kubernetes/cluster/common.sh	2016-09-24 18:11:01.586445137 +0200
+@@ -523,6 +523,10 @@
+   local master=$1
+   local file=$2
+ 
++  KUBE_MANIFESTS_TAR_URL="${SERVER_BINARY_TAR_URL/server-linux-amd64/manifests}"
++  MASTER_OS_DISTRIBUTION="${KUBE_MASTER_OS_DISTRIBUTION}"
++  NODE_OS_DISTRIBUTION="${KUBE_NODE_OS_DISTRIBUTION}"
++
+   local server_binary_tar_url=$SERVER_BINARY_TAR_URL
+   local salt_tar_url=$SALT_TAR_URL
+   local kube_manifests_tar_url=$KUBE_MANIFESTS_TAR_URL
