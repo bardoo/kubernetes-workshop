@@ -141,3 +141,10 @@ This will launch new replicas of the deployment, by creating new pods, spread ou
 Auto scaling is done in the AWS auto scaling group.
 
 ## 5. Logging
+
+## 6. Destroy environment
+This will take down the application and destroy the entire environment.
+```
+cd kubernetes
+./cluster/kube-down.sh
+```
