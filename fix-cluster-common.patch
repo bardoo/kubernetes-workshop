@@ -1,5 +1,5 @@
---- kubernetes/cluster/common.sh	2016-09-13 01:24:56.000000000 +0200
-+++ kubernetes/cluster/common.sh	2016-09-24 18:11:01.586445137 +0200
+--- cluster/common.sh	2016-09-13 01:24:56.000000000 +0200
++++ cluster/common.sh	2016-09-24 18:11:01.586445137 +0200
 @@ -523,6 +523,10 @@
    local master=$1
    local file=$2
