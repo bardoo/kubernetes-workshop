@@ -154,7 +154,7 @@ kubectl describe deployments kubernetes-workshop
 ## 5. Set up autoscaling
 
 ### 5.1 Autoscaling deployments
-[http://kubernetes.io/docs/user-guide/kubectl/kubectl_autoscale/](Autoscaling) can be set up on a deployment.
+[Autoscaling](http://kubernetes.io/docs/user-guide/kubectl/kubectl_autoscale/) can be set up on a deployment.
 ```
 kubectl autoscale deployment kubernetes-workshop --min=2 --max=6 --cpu-percent=60
 ```
