@@ -140,6 +140,17 @@ To update the application, you tell Kubernetes which deployment to update, and t
 kubectl set image deployments/kubernetes-workshop kubernetes-workshop=815899840094.dkr.ecr.eu-central-1.amazonaws.com/kubernetes-workshop:v2
 ```
 
+To check the status of the update
+```
+kubectl get rs
+```
+Here you see that it keeps some of the old replicas while creating the new ones.
+
+For more details about the strategy and settings that are used for a roll out, you can check the detailed information of the deployment.
+```
+kubectl describe deployments kubernetes-workshop
+```
+
 ## 4. Set up auto scaling
 
 ### 4.x Scaling minions
