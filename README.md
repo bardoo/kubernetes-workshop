@@ -73,7 +73,7 @@ Grafana: https://*\<master-ip\>*/api/v1/proxy/namespaces/kube-system/services/mo
 ## 2. Deploy application
 ### 2.1 Run application
 ```
-kubectl run kubernetes-workshop --image=815899840094.dkr.ecr.eu-central-1.amazonaws.com/kubernetes-workshop:latest --port=5000
+kubectl run kubernetes-workshop --image=815899840094.dkr.ecr.eu-central-1.amazonaws.com/kubernetes-workshop:v1 --port=5000
 ```
 This will create a *deployment* named *kubernetes-workshop*, in which a *pod* is created. In this pod, the Docker image located at the ECR address 815899... is run, exposing port 5000.
 
@@ -134,6 +134,11 @@ kubectl scale deployment kubernetes-workshop --replicas=4
 This will launch new replicas of the deployment, by creating new pods, spread out in the cluster.
 
 ## 3. Release a new version of application
+We have uploaded a second version of the app, that prints out v2 instead of v1, so you can see that it has been updated.
+To update the application, you tell Kubernetes which deployment to update, and the new image to run in that deployment.
+```
+kubectl set image deployments/kubernetes-workshop kubernetes-workshop=815899840094.dkr.ecr.eu-central-1.amazonaws.com/kubernetes-workshop:v2
+```
 
 ## 4. Set up auto scaling
 
