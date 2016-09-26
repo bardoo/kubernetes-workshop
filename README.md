@@ -166,11 +166,11 @@ The autoscaler will then control the number of pods that are running, depending 
 ### 5.2 Scaling minions
 Autoscaling is done by modifying the AWS autoscaling group. When a new node is created in the autoscaling group, it will automatically be configured and registered to the cluster.
 
-## 5. Logging
+## 6. Logging
 Kubernetes has built in support for either Google Cloud Logging or the ELK stack (ElasticSearch, Logstash and Kibana).
 When run on AWS, the latter alternative is set up automatically.
 
-## 6. Destroy environment
+## 7. Destroy environment
 This will take down the application and destroy the entire environment.
 ```
 cd kubernetes
