@@ -156,6 +156,7 @@ kubectl describe deployments kubernetes-workshop
 ## 4. Self healing
 Here we will see how Kubernetes is self healing when something dies unexpectedly.
 
+### 4.1 Kill a container
 Try to kill a container inside a pod. To get your external IP run the following command:
 ```
 kubectl describe services kubernetes-workshop
@@ -166,7 +167,12 @@ then to kill the container:
 curl http://<external ip>/kill-me
  ```
 
-To see what is going on, run:
+To see what is going on:
+```
+kubectl get pods
+```
+### 4.2 Kill a node
+From the AWS console, stop an EC2 instance running in the Kubernetes cluster. Kubernetes should now re-create the pods on another node. To see what is going on:
 ```
 kubectl get pods
 ```
