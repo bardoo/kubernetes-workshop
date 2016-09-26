@@ -59,7 +59,7 @@ Do not change the AWS_S3_REGION or AWS_S3_BUCKET settings, as we have pre-upload
 cd kubernetes
 ./cluster/kube-up.sh
 ```
-This command will launch the entire environment for you (vpc, nodes, security groups, elastic ip, auto scaling, etc.), upload everything that is needed by Kubernetes to a S3 bucket (unless already uploaded), and install the Kubernetes software on the master and slave nodes.
+This command will launch the entire environment for you (vpc, nodes, security groups, elastic ip, autoscaling, etc.), upload everything that is needed by Kubernetes to a S3 bucket (unless already uploaded), and install the Kubernetes software on the master and slave nodes.
 
 When the command is finished, it will give you the Elastic IP for the master node, along with endpoints of some services that are set up. This info can later be retrieved by running ```kubectl cluster-info```.
 ### 1.3 Explore it
@@ -151,10 +151,17 @@ For more details about the strategy and settings that are used for a roll out, y
 kubectl describe deployments kubernetes-workshop
 ```
 
-## 4. Set up auto scaling
+## 5. Set up autoscaling
 
-### 4.x Scaling minions
-Auto scaling is done in the AWS auto scaling group.
+### 5.1 Autoscaling deployments
+[http://kubernetes.io/docs/user-guide/kubectl/kubectl_autoscale/](Autoscaling) can be set up on a deployment.
+```
+kubectl autoscale deployment kubernetes-workshop --min=2 --max=6 --cpu-percent=60
+```
+The autoscaler will then control the number of pods that are running, depending on the CPU usage.
+
+### 5.2 Scaling minions
+Autoscaling is done by modifying the AWS autoscaling group. When a new node is created in the autoscaling group, it will automatically be configured and registered to the cluster.
 
 ## 5. Logging
 
