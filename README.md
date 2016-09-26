@@ -114,6 +114,8 @@ Check the system output of a pod (use pod name from ```kubectl get pods```
 kubectl logs <full-pod-name>
 ```
 
+For all available commands: [kubectl overview](http://kubernetes.io/docs/user-guide/kubectl-overview/)
+
 ### 2.3 Expose the application to the internet
 ```
 kubectl expose deployment kubernetes-workshop --type="LoadBalancer" --port=80 --target-port=5000
