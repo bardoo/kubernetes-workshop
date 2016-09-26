@@ -51,7 +51,7 @@ export MASTER_SIZE=t2.micro
 export NODE_SIZE=t2.micro
 export AWS_S3_REGION=eu-central-1
 export AWS_S3_BUCKET=k8s-ws-kubernetes-artifacts
-export KUBE_AWS_INSTANCE_PREFIX=k8s
+export KUBE_AWS_INSTANCE_PREFIX=k8s-<dittnavn>
 ```
 Do not change the AWS_S3_REGION or AWS_S3_BUCKET settings, as we have pre-uploaded the Kubernetes files to them.
 ### 1.2 Launch the environment
@@ -66,9 +66,12 @@ When the command is finished, it will give you the Elastic IP for the master nod
 The services uses basic auth and you find the credentials by running ```kubectl config view```. They are also using SSL/TLS, so you must access the certificate. 
 
 Some interesting services:
-Kubernetes Dashboard: https://*\<master-ip\>*/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
-Kibana: https://*\<master-ip\>*/api/v1/proxy/namespaces/kube-system/services/kibana-logging
-Grafana: https://*\<master-ip\>*/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+
+| Service |  URL |
+| --------| ---- |
+| Kubernetes Dashboard | `https://<master-ip\>api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard` |
+| Kibana |  `https://<master-ip>/api/v1/proxy/namespaces/kube-system/services/kibana-logging` |
+| Grafana | `https://<master-ip>/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana`|
 
 ## 2. Deploy application
 ### 2.1 Run application
@@ -157,6 +160,8 @@ kubectl describe deployments kubernetes-workshop
 Auto scaling is done in the AWS auto scaling group.
 
 ## 5. Logging
+Kubernetes has built in support for either Google Cloud Logging or the ELK stack (ElasticSearch, Logstash and Kibana).
+When run on AWS, the latter alternative is set up automatically.
 
 ## 6. Destroy environment
 This will take down the application and destroy the entire environment.
