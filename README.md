@@ -153,6 +153,23 @@ For more details about the strategy and settings that are used for a roll out, y
 ```
 kubectl describe deployments kubernetes-workshop
 ```
+## 4. Self healing
+Here we will see how Kubernetes is self healing when something dies unexpectedly.
+
+Try to kill a container inside a pod. To get your external IP run the following command:
+```
+kubectl describe services kubernetes-workshop
+```
+
+then to kill the container:
+ ```
+curl http://<external ip>/kill-me
+ ```
+
+To see what is going on, run:
+```
+kubectl get pods
+```
 
 ## 5. Set up autoscaling
 
