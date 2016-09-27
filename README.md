@@ -45,7 +45,7 @@ export PATH=<path/to/kubernetes-directory>/platforms/linux/amd64:$PATH
 ### 1.1 Config
 ```
 export KUBERNETES_PROVIDER=aws
-export KUBE_AWS_ZONE=eu-central-1a
+export KUBE_AWS_ZONE=eu-central-1<a or b>
 export NUM_NODES=2
 export MASTER_SIZE=t2.micro
 export NODE_SIZE=t2.micro
@@ -185,7 +185,11 @@ Autoscaling is done by modifying the AWS autoscaling group. When a new node is c
 
 ## 6. Logging
 Kubernetes has built in support for either Google Cloud Logging or the ELK stack (ElasticSearch, Logstash and Kibana).
-When run on AWS, the latter alternative is set up automatically.
+When run on AWS, the latter alternative is set up automatically. Kibana can be accessed at `https://<master-ip>/api/v1/proxy/namespaces/kube-system/services/kibana-logging`.
+
+We had some problems with the Kibana pod crashing (and restarting) for no apparent reason, but if you manage to get in,
+you should be able to see the access log from the app. You can filter by `kubernetes.namespace_name: default` to hide
+logs from all the `kube-system` pods.
 
 ## 7. Destroy environment
 This will take down the application and destroy the entire environment.
